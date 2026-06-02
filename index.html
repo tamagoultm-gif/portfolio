@@ -17,7 +17,6 @@
       :root {
         --ink: #0a0a0f;
         --paper: #f5f3ef;
-        --accent: #1a1a2e;
         --gold: #c8a96e;
         --muted: #6b6b7b;
         --line: rgba(0, 0, 0, 0.08);
@@ -31,22 +30,14 @@
         color: var(--ink);
         overflow-x: hidden;
       }
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 1000;
-        opacity: 0.4;
-      }
+
       nav {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: 100;
-        padding: 20px 60px;
+        padding: 16px 60px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -96,6 +87,7 @@
         background: var(--gold);
         transform: translateY(-1px);
       }
+
       .hero {
         min-height: 100vh;
         display: grid;
@@ -143,7 +135,7 @@
       .hero h1 {
         font-family: "Syne", sans-serif;
         font-weight: 800;
-        font-size: clamp(42px, 5vw, 72px);
+        font-size: clamp(38px, 5vw, 72px);
         line-height: 1;
         letter-spacing: -2px;
         margin-bottom: 28px;
@@ -153,7 +145,7 @@
         color: var(--gold);
       }
       .hero-desc {
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 300;
         line-height: 1.7;
         color: var(--muted);
@@ -164,6 +156,7 @@
         display: flex;
         gap: 16px;
         align-items: center;
+        flex-wrap: wrap;
       }
       .btn-primary {
         background: var(--ink);
@@ -252,6 +245,7 @@
         height: 8px;
         border-radius: 50%;
         background: #22c55e;
+        flex-shrink: 0;
         animation: pulse 2s infinite;
       }
       @keyframes pulse {
@@ -263,8 +257,9 @@
           box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
         }
       }
+
       section {
-        padding: 100px 60px;
+        padding: 80px 60px;
       }
       .section-tag {
         font-size: 11px;
@@ -277,7 +272,7 @@
       .section-title {
         font-family: "Syne", sans-serif;
         font-weight: 700;
-        font-size: clamp(28px, 3vw, 42px);
+        font-size: clamp(26px, 3vw, 42px);
         letter-spacing: -1px;
         margin-bottom: 16px;
       }
@@ -288,6 +283,7 @@
         max-width: 500px;
         line-height: 1.7;
       }
+
       .about-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -340,6 +336,7 @@
         font-size: 12px;
         color: var(--muted);
       }
+
       .skills-section {
         background: #fff;
         border-top: 1px solid var(--line);
@@ -384,6 +381,7 @@
         color: var(--paper);
         border-color: var(--ink);
       }
+
       .projects-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -479,6 +477,7 @@
       .project-card:hover .project-arrow {
         transform: translate(3px, -3px);
       }
+
       .process-section {
         background: var(--ink);
         color: var(--paper);
@@ -522,6 +521,7 @@
         color: rgba(245, 243, 239, 0.5);
         line-height: 1.6;
       }
+
       .contact-wrap {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -611,6 +611,7 @@
         opacity: 0.85;
         transform: translateY(-2px);
       }
+
       footer {
         padding: 32px 60px;
         background: var(--ink);
@@ -619,6 +620,8 @@
         justify-content: space-between;
         color: rgba(245, 243, 239, 0.4);
         font-size: 12px;
+        flex-wrap: wrap;
+        gap: 8px;
       }
       footer strong {
         font-weight: 500;
@@ -638,6 +641,137 @@
         opacity: 1;
         transform: none;
       }
+
+      /* ===== RESPONSIVE TABLET ===== */
+      @media (max-width: 900px) {
+        nav {
+          padding: 16px 24px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 100px 24px 60px;
+          gap: 40px;
+          min-height: auto;
+        }
+        .hero::after {
+          display: none;
+        }
+        .hero-stat-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        section {
+          padding: 60px 24px;
+        }
+        .divider {
+          margin: 0 24px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          margin-top: 40px;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .process-steps {
+          grid-template-columns: 1fr 1fr;
+        }
+        .contact-wrap {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        footer {
+          padding: 24px;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      /* ===== RESPONSIVE MOBILE ===== */
+      @media (max-width: 600px) {
+        nav {
+          padding: 14px 20px;
+        }
+        .nav-cta {
+          padding: 8px 16px;
+          font-size: 12px;
+        }
+        .hero {
+          padding: 90px 20px 50px;
+          gap: 32px;
+        }
+        .hero h1 {
+          font-size: 38px;
+          letter-spacing: -1.5px;
+        }
+        .hero-desc {
+          font-size: 15px;
+        }
+        .hero-stat-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+        .stat-card {
+          padding: 16px;
+        }
+        .stat-num {
+          font-size: 28px;
+        }
+        .stat-label {
+          font-size: 10px;
+        }
+        .availability-badge {
+          padding: 12px 16px;
+          font-size: 13px;
+        }
+        section {
+          padding: 50px 20px;
+        }
+        .divider {
+          margin: 0 20px;
+        }
+        .section-title {
+          font-size: 26px;
+          letter-spacing: -0.5px;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .skill-group {
+          padding: 20px 16px;
+        }
+        .process-steps {
+          grid-template-columns: 1fr;
+        }
+        .process-step {
+          padding: 24px 20px;
+        }
+        .contact-cta-box {
+          padding: 28px 24px;
+        }
+        .cta-title {
+          font-size: 22px;
+        }
+        .project-card {
+          padding: 24px;
+        }
+        .project-title {
+          font-size: 18px;
+        }
+        .about-grid {
+          margin-top: 32px;
+        }
+        .fact {
+          padding: 16px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -652,7 +786,7 @@
       <a href="mailto:tamagoultm@gmail.com" class="nav-cta">Hire Me</a>
     </nav>
 
-    <section class="hero" style="padding-top: 120px">
+    <section class="hero">
       <div>
         <div class="hero-label">Junior Full Stack Developer</div>
         <h1>Building<br />Digital<br /><em>Excellence.</em></h1>
